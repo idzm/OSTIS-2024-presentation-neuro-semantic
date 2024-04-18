@@ -1,0 +1,136 @@
+\documentclass{beamer}
+
+\usepackage{iftex}
+
+\iftutex
+% For LuaTeX or XeTeX Use Google's
+% OpenType Noto fonts for typesetting
+% Russian text
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={TeX}}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Sans Mono}
+
+\else
+% For pdfTeX we must use old
+% 8-bit font technologies
+\usepackage[T2A]{fontenc}
+\fi
+
+% Hyphenation rules
+\usepackage{hyphenat}
+\usepackage[english, russian]{babel}
+
+% More styles for bullets
+\usepackage{pifont}
+
+% Using listings to highlight code
+\usepackage{listings}
+
+% Information to be included in the title page:
+\title{
+    Neuro-semantic industrial control
+    \ifdefined\tagversion
+        \newline
+        \newline
+        v\tagversion
+    \fi}
+\author{Иванюк Д.~С.}
+\institute{Савушкин продукт}
+\date{\today}
+
+% TikZ is probably the most complex and powerful tool to create graphic elements in LaTeX.
+\usepackage{tikz}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\begin{document}
+
+\usetikzlibrary{positioning,fit,calc} % used for the efficient working of the positioning system
+
+\tikzset{block/.style={draw, thick, text width=1cm, minimum height=.5cm, align=center},
+    % the align command is used to align the block diagram at the center
+    % the height command adjust the height of the block diagram
+    % here block diagram refers to the whole diagram, not the single block
+    % the thick command here signifies the border of all the blocks used inside the block diagram. You can change it to thin command if you want the thin edge of the blocks
+    line/.style={-latex}   % the lesser the width the greater will be the diagram window
+}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Содержание}
+    \tableofcontents
+\end{frame}
+
+\section{Введение}
+ {
+  \begin{frame}
+      \frametitle{Нейронные сети}
+
+      \centering
+      \begin{tikzpicture}
+          \node[rectangle, fill=black, text=white, minimum height=1cm] (n) {neural network};
+          \node[left=of n] (in) {inputs};
+          \node[right=of n] (out) {outputs};
+
+          \draw[line] (in)--(n);
+          \draw[line] (n)--(out);
+      \end{tikzpicture}
+
+  \end{frame}
+ }
+
+ \section{Нейроуправление}
+ {
+  \begin{frame}
+    \frametitle{Нейроуправление}
+
+    \tikzset{
+        box/.style={
+                % The shape:
+                rectangle,
+                % The size:
+                minimum size=20mm,
+                % The border:
+                very thick,
+                draw=red!50!black!50,         % 50% red and 50% black,
+                % and that mixed with 50% white
+                % The filling:
+                top color=white,              % a shading that is white at the top...
+                bottom color=red!50!black!20, % and something else at the bottom
+                % Font
+                font=\itshape,
+                align=center}}
+
+    \tikzset{big_arrow/.style={-{Stealth[length=5mm, width=4mm]}}}
+
+    \centering
+    \usetikzlibrary {positioning,shapes.misc,calc,arrows.meta,arrows}
+    \begin{tikzpicture}[
+            right1/.style={to path={-- ++(4,0) |- (\tikztotarget)}},
+            left1/.style={to path={-- ++(-4,0) |- (\tikztotarget)}}]
+        \node (o1)   [box]                        {Объект\\управления};
+        \node (u1)   [below=of o1,align=center]   {$\mathbf{ U(t) }$\\Эффективность};
+        \node (c1)   [box,below=of u1]            {Управляющее\\устройство\\(контроллер)};
+
+        \node (control) [right=of c1,align=center]  {$\mathbf{ u(t) }$\\Управление};
+        \node (sensors) [left=of c1,align=center]   {$\mathbf{ X(t) }$\\Показания датчиков};
+
+        \path {
+            (o1)            edge[very thick]                     (u1)
+            (u1)            edge[very thick, big_arrow]          (c1)
+            ($ (c1.east) $) edge[very thick, big_arrow, right1]  ($ (o1.east) $)
+            ($ (o1.west) $) edge[very thick, big_arrow, left1]   ($ (c1.west) $) };
+    \end{tikzpicture}
+
+  \end{frame}
+ }
+
+\end{document}
