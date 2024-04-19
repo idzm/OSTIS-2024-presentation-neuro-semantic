@@ -69,25 +69,7 @@
     \tableofcontents
 \end{frame}
 
-\section{Введение}
- {
-  \begin{frame}
-      \frametitle{Нейронные сети}
-
-      \centering
-      \begin{tikzpicture}
-          \node[rectangle, fill=black, text=white, minimum height=1cm] (n) {neural network};
-          \node[left=of n] (in) {inputs};
-          \node[right=of n] (out) {outputs};
-
-          \draw[line] (in)--(n);
-          \draw[line] (n)--(out);
-      \end{tikzpicture}
-
-  \end{frame}
- }
-
- \section{Нейроуправление}
+\section{Нейроуправление}
  {
   \begin{frame}
     \frametitle{Нейроуправление}
@@ -131,6 +113,101 @@
     \end{tikzpicture}
 
   \end{frame}
+
+  \begin{frame}{Разработанный нейро-ПИД-контроллер}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{images/developed-NN.png}
+    \end{figure}
+  \end{frame}
+
+  \begin{frame}{Настройщик ПИД}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{images/neuro-adjuster-PID.png}
+    \end{figure}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Нейронные сети}
+
+    \centering
+    \begin{tikzpicture}
+        \node[rectangle, fill=black, text=white, minimum height=1cm] (n) {neural network};
+        \node[left=of n] (in) {inputs};
+        \node[right=of n] (out) {outputs};
+
+        \draw[line] (in)--(n);
+        \draw[line] (n)--(out);
+    \end{tikzpicture}
+
+\end{frame}
+ }
+
+ \section{Семантические технологии}
+ {
+    \begin{frame}{S88}
+        \begin{itemize}
+            \item \textit{ANSI/ISA-88.00.01-2010}, Batch Control –- Part 1: Models and Terminology;
+            \item \textit{ISA-88.00.02-2001}, Batch Control –- Part 2: Data Structures and Guidelines for Languages;
+            \item \textit{ANSI/ISA-TR88.00.02-2015}, Machine and Unit States: An implementation example of \textit{ANSI/ISA-88.00.01};
+            \item \textit{ISA-88.00.03-2003}, Batch Control –- Part 3: General and Site Recipe Models and Representation;
+            \item \textit{ISA-TR88.0.03-1996}, Possible Recipe Procedure Presentation Formats;
+            \item \textit{ANSI/ISA-88.00.04-2006}, Batch Control –- Part 4: Batch Production Records;
+            \item \textit{ISA-TR88.95.01-2008}, Using ISA-88 and ISA-95 Together;
+            \item \textit{IEC 61512-1}, The European version approved in 1997, based on the older version \textit{ISA-88.01-1995};
+            \item \textit{GOST R IEC 61512-1-2016} -- Russian version of the standard, identical to \textit{IEC 61512-1}.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{S95}
+        \begin{itemize}
+            \item \textit {ANSI/ISA-95.00.01-2010}, Enterprise-Control System Integration -- Part 1: Models and Terminology;
+            \item \textit {ANSI/ISA-95.00.02-2018}, Enterprise-Control System Integration -- Part 2: Objects and Attributes for Enterprise-Control System Integration;
+            \item \textit {ANSI/ISA-95.00.03-2013}, Enterprise-Control System Integration -- Part 3: Activity Models of Manufacturing Operations Management;
+            \item \textit {ANSI/ISA-95.00.04-2018}, Enterprise-Control System Integration -- Part 4: Objects and Attributes for Manufacturing Operations Management Integration;
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{S95}
+        \begin{itemize}
+            \item \textit {ANSI/ISA-95.00.05-2018}, Enterprise-Control System Integration -- Part 5: Business-to-Manufacturing Transactions;
+            \item \textit {ANSI/ISA-95.00.06-2014}, Enterprise-Control System Integration -- Part 6: Messaging Service Model;
+            \item \textit {ANSI/ISA-95.00.07-2017}, Enterprise-Control System Integration -- Part 7: Alias Service Model;
+            \item \textit {ANSI/ISA-95.00.08-2020}, Enterprise-Control System Integration -– Part 8: Information Exchange Profiles.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{ISA-5.1}
+        \begin{itemize}
+            \item \textit {ANSI/ISA-5.1-2022}, Instrumentation Symbols and Identification;
+            \item \textit {ISA-5.9 working group}, Controller Algorithms and Performance;
+            \item \textit {ISA-5.4}, Instrument Loop Diagrams;
+            \item \textit {ISA-5.5-1985}, Graphic Symbols for Process Displays;
+            \item \textit {ISA-5.6}, Documentation for Control Software Applications;
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Устройства управления}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.7\textwidth]{images/control-modules-s88.png}
+        \end{figure}
+      \end{frame}
+ }
+
+ \section{Нейро + семантическое управление на основе OSTIS}
+ {
+    \begin{frame}{OSTIS в управлении}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{images/OSTIS-in-control.png}
+        \end{figure}
+      \end{frame}
+ }
+
+ \section{Выводы}
+ {
  }
 
 \end{document}
